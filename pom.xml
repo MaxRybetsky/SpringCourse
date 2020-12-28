@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spring_course_mvc</module>
+        <module>spring_course_mvc_hibernate_aop</module>
     </modules>
 
     <name>spring_course</name>
@@ -79,6 +80,11 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.1.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.2</version>
         </dependency>
     </dependencies>
 
