@@ -11,6 +11,7 @@
     <modules>
         <module>spring_course_mvc</module>
         <module>spring_course_mvc_hibernate_aop</module>
+        <module>spring_course_mvc_hibernate_aop_practise</module>
     </modules>
 
     <name>spring_course</name>
