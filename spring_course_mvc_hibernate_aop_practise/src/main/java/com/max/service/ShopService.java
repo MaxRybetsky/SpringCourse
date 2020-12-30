@@ -8,4 +8,6 @@ import java.util.Map;
 
 public interface ShopService {
     Map<Category, List<Good>> getAllGoodsWithCategories();
+
+    void deleteGood(int id);
 }
