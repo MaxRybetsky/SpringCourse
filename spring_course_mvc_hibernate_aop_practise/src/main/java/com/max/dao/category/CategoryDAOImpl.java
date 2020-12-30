@@ -20,9 +20,10 @@ public class CategoryDAOImpl implements CategoryDAO {
         Query<Category> categoryQuery = session.createQuery("from Category",
                 Category.class);
         List<Category> categories = categoryQuery.getResultList();
-        if(categories.size() != 0) {
-            System.out.println(categories.get(0).getGoods().get(0).getName());
-        }
+//        This is for debugging
+//        if(categories.size() != 0) {
+//            System.out.println(categories.get(0).getGoods().get(0).getName());
+//        }
         return categories;
     }
 }
