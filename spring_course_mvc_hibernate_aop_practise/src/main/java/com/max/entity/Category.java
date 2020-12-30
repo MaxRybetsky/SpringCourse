@@ -25,7 +25,7 @@ public class Category {
     @OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH},
             mappedBy = "category",
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     private List<Good> goods;
 
     /**
