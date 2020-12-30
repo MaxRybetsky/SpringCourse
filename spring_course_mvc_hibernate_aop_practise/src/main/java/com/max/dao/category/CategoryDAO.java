@@ -6,5 +6,5 @@ import org.hibernate.Session;
 import java.util.List;
 
 public interface CategoryDAO {
-    List<Category> getAllCategories(Session session);
+    List<Category> findAllWithGoods();
 }
