@@ -24,11 +24,12 @@ public class MyController {
         return "all-goods";
     }
 
-    @RequestMapping("/addGood")
+    @RequestMapping("/addNewGood")
     public String saveGood(Model model) {
         Good good = new Good();
         model.addAttribute("good", good);
-
+        Map<Category, String> categories = shopService.getCategoriesWithNames();
+        model.addAttribute("categories", categories);
         return "edit-good-info";
     }
 

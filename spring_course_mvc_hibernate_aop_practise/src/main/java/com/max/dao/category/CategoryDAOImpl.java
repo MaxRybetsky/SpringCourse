@@ -14,9 +14,20 @@ public class CategoryDAOImpl implements CategoryDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
+    @Override
     public List<Category> findAllWithGoods() {
-        Session session = sessionFactory.getCurrentSession();
         String query = "select c from Category c left join fetch c.goods";
+        return getCategoriesByQuery(query);
+    }
+
+    @Override
+    public List<Category> findAll() {
+        String query = "from Category";
+        return getCategoriesByQuery(query);
+    }
+
+    private List<Category> getCategoriesByQuery(String query) {
+        Session session = sessionFactory.getCurrentSession();
         Query<Category> categoryQuery = session.createQuery(query, Category.class);
         return categoryQuery.getResultList();
     }

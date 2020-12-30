@@ -36,4 +36,15 @@ public class ShopServiceImpl implements ShopService{
     public void deleteGood(int id) {
         goodDAO.delete(id);
     }
+
+    @Override
+    @Transactional
+    public Map<Category, String> getCategoriesWithNames() {
+        List<Category> categories = categoryDAO.findAll();
+        Map<Category, String> categoryStringMap = new HashMap<>();
+        for (Category category : categories) {
+            categoryStringMap.put(category, category.getName());
+        }
+        return categoryStringMap;
+    }
 }
