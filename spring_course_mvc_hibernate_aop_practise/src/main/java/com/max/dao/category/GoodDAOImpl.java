@@ -20,4 +20,10 @@ public class GoodDAOImpl implements GoodDAO {
         goodQuery.setParameter("id", id);
         goodQuery.executeUpdate();
     }
+
+    @Override
+    public void save(Good good) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(good);
+    }
 }

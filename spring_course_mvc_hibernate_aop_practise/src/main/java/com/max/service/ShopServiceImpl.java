@@ -47,4 +47,10 @@ public class ShopServiceImpl implements ShopService{
         }
         return categoryStringMap;
     }
+
+    @Override
+    @Transactional
+    public void saveGood(Good good) {
+        goodDAO.save(good);
+    }
 }

@@ -6,6 +6,7 @@ import com.max.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,12 +26,19 @@ public class MyController {
     }
 
     @RequestMapping("/addNewGood")
-    public String saveGood(Model model) {
+    public String addGood(Model model) {
         Good good = new Good();
         model.addAttribute("good", good);
         Map<Category, String> categories = shopService.getCategoriesWithNames();
         model.addAttribute("categories", categories);
+        System.out.println(categories);
         return "edit-good-info";
+    }
+
+    @RequestMapping("/saveGood")
+    public String saveGood(@ModelAttribute("good") Good good) {
+        shopService.saveGood(good);
+        return "redirect:/";
     }
 
     @RequestMapping("/deleteGood")

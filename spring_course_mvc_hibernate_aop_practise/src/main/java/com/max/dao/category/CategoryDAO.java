@@ -8,4 +8,5 @@ import java.util.List;
 public interface CategoryDAO {
     List<Category> findAllWithGoods();
     List<Category> findAll();
+    Category getCategoryById(int id);
 }
