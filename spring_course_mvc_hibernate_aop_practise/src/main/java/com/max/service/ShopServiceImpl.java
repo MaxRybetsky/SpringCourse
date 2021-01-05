@@ -59,4 +59,10 @@ public class ShopServiceImpl implements ShopService{
     public Category getCategoryById(int id) {
         return categoryDAO.getCategoryById(id);
     }
+
+    @Override
+    @Transactional
+    public Good getGoodById(int id) {
+        return goodDAO.get(id);
+    }
 }

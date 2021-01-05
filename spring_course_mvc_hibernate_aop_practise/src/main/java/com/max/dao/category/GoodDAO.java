@@ -6,4 +6,6 @@ public interface GoodDAO {
     void delete(int id);
 
     void save(Good good);
+
+    Good get(int id);
 }

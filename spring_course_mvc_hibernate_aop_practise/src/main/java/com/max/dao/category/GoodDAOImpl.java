@@ -26,4 +26,10 @@ public class GoodDAOImpl implements GoodDAO {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(good);
     }
+
+    @Override
+    public Good get(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Good.class, id);
+    }
 }

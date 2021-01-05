@@ -54,6 +54,15 @@ public class MyController {
         return "redirect:/";
     }
 
+    @RequestMapping("/updateGoodInfo")
+    public String updateGood(@RequestParam("goodId")int id,
+                             Model model) {
+        Good good = shopService.getGoodById(id);
+        model.addAttribute("good", good);
+        addCategoriesToModel(model);
+        return "edit-good-info";
+    }
+
     private void addCategoriesToModel(Model model) {
         Map<Category, String> categories = shopService.getCategoriesWithNames();
         model.addAttribute("categories", categories);
