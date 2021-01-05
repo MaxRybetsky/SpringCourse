@@ -19,4 +19,6 @@ public interface ShopService {
     Category getCategoryById(int id);
 
     Good getGoodById(int id);
+
+    void saveCategory(Category category);
 }

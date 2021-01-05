@@ -27,6 +27,32 @@ public class MyController {
         return "all-goods";
     }
 
+    @RequestMapping("/addNewCategory")
+    public String addCategory(Model model) {
+        Category category = new Category();
+        model.addAttribute("category", category);
+        return "edit-cat-info";
+    }
+
+    @RequestMapping("/updateCategoryInfo")
+    public String updateCategory(@RequestParam("catId") int id,
+                                 Model model) {
+        Category category = shopService.getCategoryById(id);
+        model.addAttribute("category", category);
+        return "edit-cat-info";
+    }
+
+    @RequestMapping("/saveCategory")
+    public String saveCategory(@Valid @ModelAttribute("category") Category category,
+                               BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "edit-cat-info";
+        } else {
+            shopService.saveCategory(category);
+            return "redirect:/";
+        }
+    }
+
     @RequestMapping("/addNewGood")
     public String addGood(Model model) {
         Good good = new Good();
@@ -39,7 +65,7 @@ public class MyController {
     public String saveGood(@Valid @ModelAttribute("good") Good good,
                            BindingResult bindingResult,
                            Model model) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             addCategoriesToModel(model);
             return "edit-good-info";
         } else {
@@ -49,13 +75,13 @@ public class MyController {
     }
 
     @RequestMapping("/deleteGood")
-    public String deleteGood(@RequestParam("goodId")int id) {
+    public String deleteGood(@RequestParam("goodId") int id) {
         shopService.deleteGood(id);
         return "redirect:/";
     }
 
     @RequestMapping("/updateGoodInfo")
-    public String updateGood(@RequestParam("goodId")int id,
+    public String updateGood(@RequestParam("goodId") int id,
                              Model model) {
         Good good = shopService.getGoodById(id);
         model.addAttribute("good", good);

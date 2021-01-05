@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,7 @@ public class Category {
     private int id;
 
     @Column(name = "name")
+    @NotEmpty(message = "Name should not be empty!")
     private String name;
 
     @OneToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE,
@@ -28,20 +30,6 @@ public class Category {
             mappedBy = "category",
             fetch = FetchType.LAZY)
     private List<Good> goods;
-
-    /**
-     * Adds new good to the category.
-     *
-     * @param good Good to add.
-     * @return true if a good was sucessfully
-     * added to category, otherwise - false.
-     */
-    public boolean addGood(Good good) {
-        if (goods == null) {
-            goods = new ArrayList<>();
-        }
-        return goods.add(good);
-    }
 
     @Override
     public String toString() {

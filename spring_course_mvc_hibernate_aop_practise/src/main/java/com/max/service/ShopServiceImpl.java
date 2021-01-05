@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ShopServiceImpl implements ShopService{
+public class ShopServiceImpl implements ShopService {
     @Autowired
     CategoryDAO categoryDAO;
 
@@ -25,7 +25,7 @@ public class ShopServiceImpl implements ShopService{
     public Map<Category, List<Good>> getAllGoodsWithCategories() {
         Map<Category, List<Good>> goods = new HashMap<>();
         List<Category> categories = categoryDAO.findAllWithGoods();
-        for(Category category : categories) {
+        for (Category category : categories) {
             goods.put(category, category.getGoods());
         }
         return goods;
@@ -64,5 +64,11 @@ public class ShopServiceImpl implements ShopService{
     @Transactional
     public Good getGoodById(int id) {
         return goodDAO.get(id);
+    }
+
+    @Override
+    @Transactional
+    public void saveCategory(Category category) {
+        categoryDAO.saveOrUpdate(category);
     }
 }
