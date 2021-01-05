@@ -7,10 +7,13 @@
         <form:form action="saveGood" modelAttribute="good">
             <form:hidden path="id" />
             Name: <form:input path="name" />
+            <form:errors path="name" />
             <br><br>
             Quantity: <form:input path="quantity" />
+            <form:errors path="quantity" />
             <br><br>
             <form:radiobuttons path="category" items="${categories}" />
+            <form:errors path="category" />
             <br><br>
             <input type="submit" value="OK" />
         </form:form>

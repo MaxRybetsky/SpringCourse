@@ -53,4 +53,10 @@ public class ShopServiceImpl implements ShopService{
     public void saveGood(Good good) {
         goodDAO.save(good);
     }
+
+    @Override
+    @Transactional
+    public Category getCategoryById(int id) {
+        return categoryDAO.getCategoryById(id);
+    }
 }

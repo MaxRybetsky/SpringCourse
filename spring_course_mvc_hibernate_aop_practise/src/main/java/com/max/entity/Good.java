@@ -1,10 +1,12 @@
 package com.max.entity;
 
+import com.max.validation.NeedCategory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
@@ -19,14 +21,18 @@ public class Good {
     private int id;
 
     @Column(name = "name")
+    @NotEmpty(message = "Name is required")
+    @Size(min = 3, max = 100, message = "Size should be between 3 and 100 symbols")
     private String name;
 
     @Column(name = "quantity")
+    @NotNull(message = "Quantity shouldn't be empty!")
     private int quantity;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "category_id")
+    @NeedCategory
     private Category category;
 
     @Override

@@ -15,4 +15,6 @@ public interface ShopService {
     Map<Category, String> getCategoriesWithNames();
 
     void saveGood(Good good);
+
+    Category getCategoryById(int id);
 }
