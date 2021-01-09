@@ -59,15 +59,16 @@ public class AppController {
         }
 
         /*
-         * Preferred way to achieve uniqueness of field [ssn] should be implementing custom @Unique annotation
-         * and applying it on field [ssn] of Model class [Employee].
+         * Preferred way to achieve uniqueness of field [ssn] should be implementing custom
+         *  @Unique annotation and applying it on field [ssn] of Model class [Employee].
          *
-         * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
-         * framework as well while still using internationalized messages.
+         * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors
+         *  outside the validation framework as well while still using internationalized messages.
          */
         if (!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())) {
             FieldError ssnError = new FieldError("employee", "ssn",
-                    messageSource.getMessage("non.unique.ssn", new String[]{employee.getSsn()}, Locale.getDefault()));
+                    messageSource.getMessage("non.unique.ssn",
+                            new String[]{employee.getSsn()}, Locale.getDefault()));
             bindingResult.addError(ssnError);
             return "registration";
         }
