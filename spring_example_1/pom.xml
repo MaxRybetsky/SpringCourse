@@ -21,8 +21,8 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <springframework.version>5.3.2</springframework.version>
         <hibernate.version>5.4.26.Final</hibernate.version>
-        <mysql.connector.version>5.1.31</mysql.connector.version>
-        <joda-time.version>2.3</joda-time.version>
+        <mysql.connector.version>8.0.22</mysql.connector.version>
+        <joda-time.version>2.10.5</joda-time.version>
         <testng.version>6.9.4</testng.version>
         <mockito.version>1.10.19</mockito.version>
         <h2.version>1.4.187</h2.version>
@@ -30,6 +30,18 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.0-alpha1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.3</version>
+        </dependency>
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -69,7 +81,7 @@
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
+            <version>2.0.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -84,6 +96,12 @@
             <version>${mysql.connector.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
+
         <!-- Joda-Time -->
         <dependency>
             <groupId>joda-time</groupId>
@@ -92,22 +110,29 @@
         </dependency>
 
         <!-- To map JodaTime with database type -->
+<!--        <dependency>-->
+<!--            <groupId>org.jadira.usertype</groupId>-->
+<!--            <artifactId>usertype.core</artifactId>-->
+<!--            <version>3.0.0.CR1</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.jadira.usertype/usertype.core -->
         <dependency>
             <groupId>org.jadira.usertype</groupId>
             <artifactId>usertype.core</artifactId>
-            <version>3.0.0.CR1</version>
+            <version>6.0.1.GA</version>
         </dependency>
+
 
         <!-- Servlet+JSP+JSTL -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>4.0.1</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.1</version>
+            <version>2.3.3</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

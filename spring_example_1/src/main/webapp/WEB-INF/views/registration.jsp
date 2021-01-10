@@ -22,7 +22,7 @@
 
     <h2>Registration Form</h2>
 
-    <form:form method="POST" modelAttribute="employee">
+    <form:form method="POST" modelAttribute="employee" action="save">
         <form:input type="hidden" path="id" id="id"/>
         <table>
             <tr>

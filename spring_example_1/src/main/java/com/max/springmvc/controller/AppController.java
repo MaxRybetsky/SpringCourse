@@ -3,6 +3,7 @@ package com.max.springmvc.controller;
 import com.max.springmvc.model.Employee;
 import com.max.springmvc.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +21,7 @@ import java.util.Locale;
 @RequestMapping("/")
 public class AppController {
     @Autowired
+    @Qualifier("employeeService")
     EmployeeService service;
 
     @Autowired
@@ -50,7 +52,7 @@ public class AppController {
      * This method will be called on form submission, handling POST request for
      * saving employee in database. It also validates the user input
      */
-    @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/save"}, method = RequestMethod.POST)
     public String saveEmployee(@Valid Employee employee,
                                BindingResult bindingResult,
                                ModelMap model) {
@@ -68,7 +70,7 @@ public class AppController {
         if (!service.isEmployeeSsnUnique(employee.getId(), employee.getSsn())) {
             FieldError ssnError = new FieldError("employee", "ssn",
                     messageSource.getMessage("non.unique.ssn",
-                            new String[]{employee.getSsn()}, Locale.getDefault()));
+                            new String[]{employee.getSsn()}, Locale.US));
             bindingResult.addError(ssnError);
             return "registration";
         }
@@ -93,7 +95,7 @@ public class AppController {
      * This method will be called on form submission, handling POST request for
      * updating employee in database. It also validates the user input
      */
-    @RequestMapping(value = {"/edit-{ssn}-employee"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/update-{ssn}-employee"}, method = RequestMethod.GET)
     public String updateEmployee(@Valid Employee employee, BindingResult result,
                                  ModelMap model, @PathVariable String ssn) {
         if (result.hasErrors()) {

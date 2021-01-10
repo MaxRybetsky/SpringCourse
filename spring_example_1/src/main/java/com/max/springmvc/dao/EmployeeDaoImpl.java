@@ -2,8 +2,8 @@ package com.max.springmvc.dao;
 
 import com.max.springmvc.model.Employee;
 import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -5,10 +5,7 @@ import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -36,6 +33,7 @@ public class Employee {
     private BigDecimal salary;
 
     @NotEmpty
+    @Pattern(regexp = "\\d+")
     @Column(name = "SSN", unique = true, nullable = false)
     private String ssn;
 
