@@ -29,7 +29,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void updateEmployee(Employee employee) {
         Employee entity = dao.findById(employee.getId());
         if (entity != null) {
-            entity.setValue(employee);
+            entity.setName(employee.getName());
+            entity.setJoiningDate(employee.getJoiningDate());
+            entity.setSalary(employee.getSalary());
+            entity.setSsn(employee.getSsn());
         }
     }
 
