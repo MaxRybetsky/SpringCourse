@@ -13,6 +13,7 @@
         <module>spring_course_mvc_hibernate_aop</module>
         <module>spring_course_mvc_hibernate_aop_practise</module>
         <module>spring_example_1</module>
+        <module>spring_rest</module>
     </modules>
 
     <name>spring_course</name>
