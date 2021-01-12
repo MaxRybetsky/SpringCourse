@@ -1,8 +1,8 @@
 package com.max.springmvc.controller;
 
+import com.max.springmvc.EmployeeInitializer;
 import com.max.springmvc.model.Employee;
 import com.max.springmvc.service.EmployeeService;
-import org.joda.time.LocalDate;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -14,7 +14,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class AppControllerTest {
     @BeforeClass
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        employees = getEmployeeList();
+        employees = EmployeeInitializer.getEmployeeList();
     }
 
     @Test
@@ -129,26 +128,5 @@ public class AppControllerTest {
     public void deleteEmployee() {
         doNothing().when(service).deleteEmployeeBySsn(anyString());
         Assert.assertEquals(appController.deleteEmployee("123"), "redirect:/list");
-    }
-
-    private List<Employee> getEmployeeList() {
-        // Employee #1
-        Employee e1 = new Employee();
-        e1.setId(1);
-        e1.setName("Axel");
-        e1.setJoiningDate(new LocalDate());
-        e1.setSalary(new BigDecimal(10000));
-        e1.setSsn("XXX111");
-        // Employee #2
-        Employee e2 = new Employee();
-        e2.setId(2);
-        e2.setName("Jeremy");
-        e2.setJoiningDate(new LocalDate());
-        e2.setSalary(new BigDecimal(20000));
-        e2.setSsn("XXX222");
-        // Add employees to list
-        employees.add(e1);
-        employees.add(e2);
-        return employees;
     }
 }
