@@ -16,6 +16,7 @@
         <module>spring_rest</module>
         <module>spring_rest_client</module>
         <module>spring_security</module>
+        <module>spring_boot</module>
     </modules>
 
     <name>spring_course</name>
