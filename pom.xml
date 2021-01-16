@@ -19,6 +19,7 @@
         <module>spring_boot</module>
         <module>spring_boot_data_rest</module>
         <module>spring_boot_jpa</module>
+        <module>spring_mvc_hibernate_many_to_many</module>
     </modules>
 
     <name>spring_course</name>
