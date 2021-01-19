@@ -4,10 +4,12 @@ import com.max.dao.UserProfileDao;
 import com.max.model.UserProfile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Service("userProfileService")
+@Transactional
 public class UserProfileServiceImpl implements UserProfileService {
     private UserProfileDao userProfileDao;
 

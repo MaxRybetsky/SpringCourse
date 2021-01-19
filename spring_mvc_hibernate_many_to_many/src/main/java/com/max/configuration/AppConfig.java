@@ -7,19 +7,21 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
+@EnableJpaRepositories("com.max.dao")
 @ComponentScan(basePackages = "com.max")
 public class AppConfig extends WebMvcConfigurerAdapter {
     private RoleToUserProfileConverter converter;
+
+    public AppConfig() {
+    }
 
     @Autowired
     public AppConfig(RoleToUserProfileConverter converter) {
@@ -67,5 +69,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return messageSource;
     }
 
-
+    @Override
+    public void configurePathMatch(PathMatchConfigurer matcher) {
+        matcher.setUseRegisteredSuffixPatternMatch(true);
+    }
 }
